@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Users</title>
+</head>
+<body>
+    <h1>User List</h1>
+    <a href="{{ url_for('add_user') }}">Add User</a>
+    <br><br>
+    <table border="1">
+        <tr>
+            <th>Name</th><th>Email</th><th>Institution</th><th>Position</th><th>Phone</th><th>Actions</th>
+        </tr>
+        {% for user in users %}
+        <tr>
+            <td>{{ user.name }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.institution }}</td>
+            <td>{{ user.position }}</td>
+            <td>{{ user.phone }}</td>
+            <td>
+                <a href="{{ url_for('edit_user', id=user.id) }}">Edit</a>
+                <form action="{{ url_for('delete_user', id=user.id) }}" method="post" style="display:inline;">
+                    <button type="submit" onclick="return confirm('Are you sure?')">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
