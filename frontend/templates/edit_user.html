@@ -1,44 +1,129 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
-    <title>Mengubah Nama Anda di Web</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Pengunjung</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+        }
+
+        p {
+            text-align: center;
+            color: #7f8c8d;
+            font-size: 0.95rem;
+            margin-bottom: 30px;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .form-actions {
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .form-actions button,
+        .form-actions a {
+            padding: 12px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .form-actions button {
+            background-color: #27ae60;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .form-actions button:hover {
+            background-color: #219150;
+        }
+
+        .form-actions a {
+            background-color: #bdc3c7;
+            color: white;
+        }
+
+        @media (min-width: 500px) {
+            .form-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .form-actions a {
+                margin-left: 10px;
+            }
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; color: #333;">
+<body>
 
-    <div style="max-width: 600px; margin: 60px auto; background-color: #ffffff; padding: 40px 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
-
-        <h1 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">✏️ Edit Pengunjung</h1>
-
-        <p style="text-align: center; color: #7f8c8d; font-size: 16px; margin-bottom: 30px;">Pesan: <em>{{ user.pesan }}</em></p>
+    <div class="container">
+        <h1>✏️ Edit Pengunjung</h1>
+        <p>Pesan: <em>{{ user.pesan }}</em></p>
 
         <form method="post">
-
-            <div style="margin-bottom: 25px;">
-                <label for="name" style="display: block; font-weight: bold; margin-bottom: 8px;">Nama Baru</label>
-                <input type="text" name="name" id="name" value="{{ user.name }}" required
-                       style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
+            <div>
+                <label for="name">Nama Baru</label>
+                <input type="text" id="name" name="name" value="{{ user.name }}" required>
             </div>
 
-            <div style="margin-bottom: 25px;">
-                <label for="pesan" style="display: block; font-weight: bold; margin-bottom: 8px;">Pesan Baru</label>
-                <input type="text" name="pesan" id="pesan" value="{{ user.pesan }}" required
-                        style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
+            <div>
+                <label for="pesan">Pesan Baru</label>
+                <input type="text" id="pesan" name="pesan" value="{{ user.pesan }}" required>
             </div>
 
-
-            <div style="text-align: center;">
-                <button type="submit"
-                        style="background-color: #27ae60; color: white; border: none; padding: 12px 30px; font-size: 16px; border-radius: 6px; cursor: pointer; transition: background-color 0.3s;">
-                    💾 Simpan Perubahan
-                </button>
-                <a href="{{ url_for('index') }}"
-                   style="margin-left: 15px; background-color: #bdc3c7; color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-size: 16px; display: inline-block;">
-                    ↩️ Batal
-                </a>
+            <div class="form-actions">
+                <button type="submit">💾 Simpan Perubahan</button>
+                <a href="{{ url_for('index') }}">↩️ Batal</a>
             </div>
-
         </form>
-
     </div>
 
 </body>

@@ -1,42 +1,125 @@
 <!DOCTYPE html>
-<html>
+<html lang="id">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Form Pendaftaran</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        h1 {
+            text-align: center;
+            color: #2c3e50;
+            margin-bottom: 25px;
+            font-size: 1.7rem;
+        }
+
+        form {
+            width: 100%;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            margin-bottom: 20px;
+        }
+
+        .form-actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .form-actions button,
+        .form-actions a {
+            padding: 12px 24px;
+            font-size: 1rem;
+            border-radius: 6px;
+            border: none;
+            text-decoration: none;
+            cursor: pointer;
+            text-align: center;
+            width: 100%;
+            max-width: 200px;
+        }
+
+        .form-actions button {
+            background-color: #3498db;
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .form-actions button:hover {
+            background-color: #2980b9;
+        }
+
+        .form-actions a {
+            background-color: #bdc3c7;
+            color: white;
+        }
+
+        @media (min-width: 500px) {
+            .form-actions {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            .form-actions a {
+                margin-left: 10px;
+            }
+        }
+    </style>
 </head>
-<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; color: #333;">
+<body>
 
-    <div style="max-width: 600px; margin: 60px auto; background-color: #ffffff; padding: 40px 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+<div class="container">
+    <h1>📝 Tambah Pengunjung</h1>
 
-        <h1 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">📝 Tambah Pengunjung</h1>
+    <form method="post">
+        <div>
+            <label for="name">Nama Lengkap</label>
+            <input type="text" name="name" id="name" required>
+        </div>
 
-        <form method="post">
+        <div>
+            <label for="pesan">Pesan</label>
+            <input type="text" name="pesan" id="pesan" required>
+        </div>
 
-            <div style="margin-bottom: 20px;">
-                <label for="name" style="display: block; font-weight: bold; margin-bottom: 8px;">Nama Lengkap</label>
-                <input type="text" name="name" id="name" required
-                       style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
-            </div>
-
-            <div style="margin-bottom: 25px;">
-                <label for="pesan" style="display: block; font-weight: bold; margin-bottom: 8px;">Pesan</label>
-                <input type="text" name="pesan" id="pesan" required
-                       style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
-            </div>
-
-            <div style="text-align: center;">
-                <button type="submit"
-                        style="background-color: #3498db; color: white; border: none; padding: 12px 30px; font-size: 16px; border-radius: 6px; cursor: pointer; transition: background-color 0.3s;">
-                    ✅ Simpan
-                </button>
-                <a href="{{ url_for('index') }}"
-                   style="margin-left: 15px; background-color: #bdc3c7; color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-size: 16px; display: inline-block;">
-                    ↩️ Kembali
-                </a>
-            </div>
-
-        </form>
-
-    </div>
+        <div class="form-actions">
+            <button type="submit">✅ Simpan</button>
+            <a href="{{ url_for('index') }}">↩️ Kembali</a>
+        </div>
+    </form>
+</div>
 
 </body>
 </html>
