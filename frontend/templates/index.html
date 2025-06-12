@@ -5,53 +5,62 @@
 </head>
 <body style="margin: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; color: #333;">
 
-    <div style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    <script>
+      {% for message in messages %}
+        alert("{{ message }}");
+      {% endfor %}
+    </script>
+  {% endif %}
+{% endwith %}
 
-        <h1 style="text-align: center; color: #2c3e50; font-size: 32px; margin-bottom: 30px;">
-            📋 Daftar Pengunjung Web Kelompok 2
-        </h1>
+<div style="max-width: 960px; margin: 0 auto; padding: 40px 20px;">
+    <h1 style="text-align: center; color: #2c3e50; font-size: 32px; margin-bottom: 30px;">
+        📋 Daftar Pengunjung Web Kelompok 2
+    </h1>
 
-        <div style="text-align: center; margin-bottom: 30px;">
-            <a href="{{ url_for('add_user') }}" style="display: inline-block; background-color: #3498db; color: white; text-decoration: none; padding: 12px 25px; border-radius: 6px; font-size: 16px; transition: background-color 0.3s;">
-                ➕ Tambahkan Pengunjung
-            </a>
-        </div>
-
-        <table style="width: 100%; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden;">
-            <thead>
-                <tr style="background-color: #ecf0f1; text-align: left;">
-                    <th style="padding: 15px; font-size: 16px;">👤 Nama</th>
-                    <th style="padding: 15px; font-size: 16px;">💬 Pesan</th>
-                    <th style="padding: 15px; font-size: 16px;">⚙️ Aksi</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for user in users %}
-                <tr style="border-top: 1px solid #ddd; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#f0f8ff';" onmouseout="this.style.backgroundColor='white';">
-                    <td style="padding: 15px;">{{ user.name }}</td>
-                    <td style="padding: 15px;">{{ user.pesan }}</td>
-                    <td style="padding: 15px;">
-                        <a href="{{ url_for('edit_user', id=user.id) }}" style="margin-right: 10px; color: #2980b9; text-decoration: none; font-weight: bold;">✏️ Ubah</a>
-                        <form action="{{ url_for('delete_user', id=user.id) }}" method="post" style="display: inline;">
-                            <button type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')" style="background-color: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px;">
-                                🗑️ Hapus
-                            </button>
-                        </form>
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-
-        {% if not users %}
-            <p style="text-align: center; margin-top: 20px; color: #7f8c8d;">Belum ada pengunjung yang terdaftar.</p>
-        {% endif %}
-
-        <footer style="text-align: center; margin-top: 50px; color: #95a5a6; font-size: 14px;">
-           Dibuat dengan ❤️ oleh Kelompok 2 angkatan 14.
-        </footer>
-
+    <div style="text-align: center; margin-bottom: 30px;">
+        <a href="{{ url_for('add_user') }}" style="display: inline-block; background-color: #3498db; color: white; text-decoration: none; padding: 12px 25px; border-radius: 6px; font-size: 16px; transition: background-color 0.3s;">
+            ➕ Tambahkan Pengunjung
+        </a>
     </div>
+
+    <table style="width: 100%; border-collapse: collapse; background-color: #ffffff; box-shadow: 0 2px 8px rgba(0,0,0,0.05); border-radius: 8px; overflow: hidden;">
+        <thead>
+            <tr style="background-color: #ecf0f1; text-align: left;">
+                <th style="padding: 15px; font-size: 16px;">👤 Nama</th>
+                <th style="padding: 15px; font-size: 16px;">💬 Pesan</th>
+                <th style="padding: 15px; font-size: 16px;">⚙️ Aksi</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for user in users %}
+            <tr style="border-top: 1px solid #ddd; transition: background-color 0.3s;" onmouseover="this.style.backgroundColor='#f0f8ff';" onmouseout="this.style.backgroundColor='white';">
+                <td style="padding: 15px;">{{ user.name }}</td>
+                <td style="padding: 15px;">{{ user.pesan }}</td>
+                <td style="padding: 15px;">
+                    <a href="{{ url_for('edit_user', id=user.id) }}" style="margin-right: 10px; color: #2980b9; text-decoration: none; font-weight: bold;">✏️ Ubah</a>
+                    <form action="{{ url_for('delete_user', id=user.id) }}" method="post" style="display: inline;">
+                        <button type="submit" onclick="return confirm('Yakin ingin menghapus data ini?')" style="background-color: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-weight: bold; font-size: 14px;">
+                            🗑️ Hapus
+                        </button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% if not users %}
+        <p style="text-align: center; margin-top: 20px; color: #7f8c8d;">Belum ada pengunjung yang terdaftar.</p>
+    {% endif %}
+
+    <footer style="text-align: center; margin-top: 50px; color: #95a5a6; font-size: 14px;">
+       Dibuat dengan ❤️ oleh Kelompok 2 angkatan 14.
+    </footer>
+
+</div>
 
 </body>
 </html>
