@@ -10,7 +10,7 @@ def lambda_handler(event, context):
     try:
         body = json.loads(event['body'])
         
-        required_fields = ['name', 'email']
+        required_fields = ['name', 'pesan']
         for field in required_fields:
             if field not in body:
                 return {
@@ -40,10 +40,7 @@ def lambda_handler(event, context):
                 CREATE TABLE IF NOT EXISTS users (
                     id INT AUTO_INCREMENT PRIMARY KEY,
                     name VARCHAR(255) NOT NULL,
-                    email VARCHAR(255) UNIQUE NOT NULL,
-                    institution VARCHAR(255),
-                    position VARCHAR(255),
-                    phone VARCHAR(20)
+                    pesan VARCHAR(255)
                 )
             ''')
             conn.commit()
@@ -51,15 +48,11 @@ def lambda_handler(event, context):
 
             cursor.execute('''
                 INSERT INTO users (
-                    name, email, institution, 
-                    position, phone
-                ) VALUES (%s, %s, %s, %s, %s)
+                    name, pesan
+                ) VALUES (%s, %s)
             ''', (
                 body['name'],
-                body['email'],
-                body.get('institution'),
-                body.get('position'),
-                body.get('phone')
+                body['pesan']
             ))
             conn.commit()
             new_id = cursor.lastrowid

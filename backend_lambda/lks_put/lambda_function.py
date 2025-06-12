@@ -37,7 +37,7 @@ def lambda_handler(event, context):
 
             update_fields = []
             params = []
-            for field in ['name', 'email', 'institution', 'position', 'phone']:
+            for field in ['name', 'pesan']:
                 if field in body:
                     update_fields.append(f"{field} = %s")
                     params.append(body[field])

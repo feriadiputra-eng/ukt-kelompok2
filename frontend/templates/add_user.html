@@ -1,17 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Add User</title>
+    <title>Form Pendaftaran</title>
 </head>
-<body>
-    <h1>Add User</h1>
-    <form method="post">
-        Name: <input type="text" name="name"><br>
-        Email: <input type="email" name="email"><br>
-        Institution: <input type="text" name="institution"><br>
-        Position: <input type="text" name="position"><br>
-        Phone: <input type="text" name="phone"><br>
-        <input type="submit" value="Add User">
-    </form>
+<body style="margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f6f8; color: #333;">
+
+    <div style="max-width: 600px; margin: 60px auto; background-color: #ffffff; padding: 40px 30px; border-radius: 10px; box-shadow: 0 4px 12px rgba(0,0,0,0.05);">
+
+        <h1 style="text-align: center; color: #2c3e50; margin-bottom: 30px;">📝 Tambah Pengunjung</h1>
+
+        <form method="post">
+
+            <div style="margin-bottom: 20px;">
+                <label for="name" style="display: block; font-weight: bold; margin-bottom: 8px;">Nama Lengkap</label>
+                <input type="text" name="name" id="name" required
+                       style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
+            </div>
+
+            <div style="margin-bottom: 25px;">
+                <label for="institution" style="display: block; font-weight: bold; margin-bottom: 8px;">Pesan</label>
+                <input type="text" name="institution" id="institution" required
+                       style="width: 100%; padding: 12px 15px; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; box-sizing: border-box;">
+            </div>
+
+            <div style="text-align: center;">
+                <button type="submit"
+                        style="background-color: #3498db; color: white; border: none; padding: 12px 30px; font-size: 16px; border-radius: 6px; cursor: pointer; transition: background-color 0.3s;">
+                    ✅ Simpan
+                </button>
+                <a href="{{ url_for('home') }}"
+                   style="margin-left: 15px; background-color: #bdc3c7; color: white; padding: 12px 20px; border-radius: 6px; text-decoration: none; font-size: 16px; display: inline-block;">
+                    ↩️ Kembali
+                </a>
+            </div>
+
+        </form>
+
+    </div>
+
 </body>
 </html>
