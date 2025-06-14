@@ -5,7 +5,7 @@ app = Flask(__name__)
 app.secret_key = 'ini_rahasia_kelompok2'  # digunakan untuk flash message
 
 # Ganti ini dengan URL endpoint Lambda API kamu
-API_BASE = 'https://rvcybuvcg7.execute-api.us-east-1.amazonaws.com/dev/users'
+API_BASE = 'https://tn6ac8w6m8.execute-api.us-east-1.amazonaws.com/dev/users'
 
 @app.route('/')
 def index():
